@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://princegupta59.github.io/Kitaably/sitemap.xml
