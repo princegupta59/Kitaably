@@ -1,299 +1,114 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kitaably — Find Your Next Great Read</title>
-  <meta name="description" content="Kitaably helps you discover novels worth reading, with simple, honest and spoiler-free reviews across fiction, mystery, classics and more." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,620;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Kitaably helps you discover novels worth reading with simple, honest and spoiler-free reviews.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,620;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header class="site-header"><div class="container">
+  <a href="index.html" class="logo">Kitaably</a>
+  <nav aria-label="Main navigation"><ul class="nav-menu">
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="novels.html">Novels</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul></nav>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+</div></header>
 
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="logo">Kitaably</a>
-      <nav aria-label="Main navigation">
-        <ul class="nav-menu">
-          <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="novels.html">Novels</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+<main>
+  <section class="hero"><div class="container">
+    <div class="hero__content">
+      <p class="hero__eyebrow">A novel discovery &amp; review site</p>
+      <h1>Find your next great read.</h1>
+      <p>Discover novels worth reading with simple, honest and spoiler-free reviews.</p>
+      <div class="hero__actions">
+        <a href="novels.html" class="btn btn--primary">Explore Novels</a>
+        <a href="about.html" class="btn btn--ghost">About Kitaably</a>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero__content">
-          <p class="hero__eyebrow">A novel discovery &amp; review site</p>
-          <h1>Find your next great read.</h1>
-          <p>Discover novels worth reading with simple, honest and spoiler-free reviews.</p>
-          <div class="hero__actions">
-            <a href="novels.html" class="btn btn--primary">Explore Novels</a>
-            <a href="about.html" class="btn btn--ghost">About Kitaably</a>
-          </div>
-        </div>
-        <div class="hero__shelf" aria-hidden="true">
-          <div class="cover cover--romance">
-            <span class="cover__title">Pride and Prejudice</span>
-            <span class="cover__author">Jane Austen</span>
-          </div>
-          <div class="cover cover--dystopian">
-            <span class="cover__title">Dune</span>
-            <span class="cover__author">Frank Herbert</span>
-          </div>
-          <div class="cover cover--classic">
-            <span class="cover__title">Godan (गोदान)</span>
-            <span class="cover__author">Munshi Premchand</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Featured Novels -->
-    <section class="section" id="featured">
-      <div class="container">
-        <div class="section__head">
-          <div>
-            <h2>Featured Novels</h2>
-            <p>A handful of novels we keep coming back to, across a few different genres.</p>
-          </div>
-          <a href="novels.html" class="btn btn--text">Browse all novels</a>
-        </div>
-
-        <div class="card-grid">
-
-          <a class="book-card" href="book.html?id=pride-prejudice" aria-label="View details for Pride and Prejudice by Jane Austen">
-            <div class="cover cover--romance" role="img" aria-label="Book cover for Pride and Prejudice by Jane Austen">
-              <span class="cover__title">Pride and Prejudice</span>
-              <span class="cover__author">Jane Austen</span>
-            </div>
-            <div class="book-card__body">
-              <p class="book-card__genre">Romance</p>
-              <h3 class="book-card__title">Pride and Prejudice</h3>
-              <p class="book-card__author">Jane Austen</p>
-              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★★</span> 4.8 / 5</p>
-              <p class="book-card__desc">A quintessential classic romance.</p>
-              <span class="btn btn--text" aria-hidden="true">Read Review</span>
-            </div>
-          </a>
-
-          <a class="book-card" href="book.html?id=and-then-there-were-none" aria-label="View details for And Then There Were None by Agatha Christie">
-            <div class="cover cover--thriller" role="img" aria-label="Book cover for And Then There Were None by Agatha Christie">
-              <span class="cover__title">And Then There Were None</span>
-              <span class="cover__author">Agatha Christie</span>
-            </div>
-            <div class="book-card__body">
-              <p class="book-card__genre">Mystery &amp; Thriller</p>
-              <h3 class="book-card__title">And Then There Were None</h3>
-              <p class="book-card__author">Agatha Christie</p>
-              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★★</span> 4.9 / 5</p>
-              <p class="book-card__desc">The gold standard of locked-room mysteries.</p>
-              <span class="btn btn--text" aria-hidden="true">Read Review</span>
-            </div>
-          </a>
-
-          <a class="book-card" href="book.html?id=hobbit" aria-label="View details for The Hobbit by J.R.R. Tolkien">
-            <div class="cover cover--fantasy" role="img" aria-label="Book cover for The Hobbit by J.R.R. Tolkien">
-              <span class="cover__title">The Hobbit</span>
-              <span class="cover__author">J.R.R. Tolkien</span>
-            </div>
-            <div class="book-card__body">
-              <p class="book-card__genre">Fantasy</p>
-              <h3 class="book-card__title">The Hobbit</h3>
-              <p class="book-card__author">J.R.R. Tolkien</p>
-              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★★</span> 4.8 / 5</p>
-              <p class="book-card__desc">Bilbo Baggins' whimsical yet dangerous journey to reclaim the lost dwarven kingdom is rich in folklore and unforgettable creatures.</p>
-              <span class="btn btn--text" aria-hidden="true">Read Review</span>
-            </div>
-          </a>
-
-          <a class="book-card" href="book.html?id=dune" aria-label="View details for Dune by Frank Herbert">
-            <div class="cover cover--dystopian" role="img" aria-label="Book cover for Dune by Frank Herbert">
-              <span class="cover__title">Dune</span>
-              <span class="cover__author">Frank Herbert</span>
-            </div>
-            <div class="book-card__body">
-              <p class="book-card__genre">Science Fiction</p>
-              <h3 class="book-card__title">Dune</h3>
-              <p class="book-card__author">Frank Herbert</p>
-              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★★</span> 4.7 / 5</p>
-              <p class="book-card__desc">A monumental space-opera epic combining political intrigue, environmental ecology, religion, and interstellar warfare on the desert planet of Arrakis.</p>
-              <span class="btn btn--text" aria-hidden="true">Read Review</span>
-            </div>
-          </a>
-
-          <a class="book-card" href="book.html?id=godan" aria-label="View details for Godan by Munshi Premchand">
-            <div class="cover cover--classic" role="img" aria-label="Book cover for Godan by Munshi Premchand">
-              <span class="cover__title">Godan (गोदान)</span>
-              <span class="cover__author">Munshi Premchand</span>
-            </div>
-            <div class="book-card__body">
-              <p class="book-card__genre">Classics</p>
-              <h3 class="book-card__title">Godan (गोदान)</h3>
-              <p class="book-card__author">Munshi Premchand</p>
-              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★★</span> 5.0 / 5</p>
-              <p class="book-card__desc">The crown jewel of realistic Hindi literature.</p>
-              <span class="btn btn--text" aria-hidden="true">Read Review</span>
-            </div>
-          </a>
-
-          <a class="book-card" href="book.html?id=kite-runner" aria-label="View details for The Kite Runner by Khaled Hosseini">
-            <div class="cover cover--historical" role="img" aria-label="Book cover for The Kite Runner by Khaled Hosseini">
-              <span class="cover__title">The Kite Runner</span>
-              <span class="cover__author">Khaled Hosseini</span>
-            </div>
-            <div class="book-card__body">
-              <p class="book-card__genre">Historical Fiction</p>
-              <h3 class="book-card__title">The Kite Runner</h3>
-              <p class="book-card__author">Khaled Hosseini</p>
-              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★★</span> 4.9 / 5</p>
-              <p class="book-card__desc">An unforgettable, emotionally wrenching journey of guilt, friendship, and redemption set against the turbulent backdrop of modern Afghan history.</p>
-              <span class="btn btn--text" aria-hidden="true">Read Review</span>
-            </div>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Browse by Genre -->
-    <section class="section section--alt">
-      <div class="container">
-        <div class="section__head">
-          <div>
-            <h2>Browse by Genre</h2>
-            <p>Not sure what you're in the mood for? Start with a shelf.</p>
-          </div>
-        </div>
-        <div class="genre-row">
-          <a class="genre-tile" style="background:var(--c-romance)" href="novels.html">Romance<span>Love stories, old and new</span></a>
-          <a class="genre-tile" style="background:var(--c-thriller)" href="novels.html">Mystery &amp; Thriller<span>Puzzles that keep you up late</span></a>
-          <a class="genre-tile" style="background:var(--c-fantasy)" href="novels.html">Fantasy<span>Worlds beyond this one</span></a>
-          <a class="genre-tile" style="background:var(--c-dystopian)" href="novels.html">Science Fiction<span>Ideas about what's next</span></a>
-          <a class="genre-tile" style="background:var(--c-classic)" href="novels.html">Classics<span>Books that have lasted</span></a>
-          <a class="genre-tile" style="background:var(--c-historical)" href="novels.html">Historical Fiction<span>The past, brought close</span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Kitaably -->
-    <section class="section">
-      <div class="container">
-        <div class="section__head">
-          <div>
-            <h2>Why Kitaably?</h2>
-          </div>
-        </div>
-        <div class="why-grid">
-          <div class="why-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 5c3-1.5 6-1.5 9 0v14c-3-1.5-6-1.5-9 0V5Z"/><path d="M21 5c-3-1.5-6-1.5-9 0v14c3-1.5 6-1.5 9 0V5Z"/></svg>
-            <h3>Simple Reviews</h3>
-            <p>Easy-to-understand reviews without unnecessary complicated analysis.</p>
-          </div>
-          <div class="why-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><path d="M4 4l16 16"/></svg>
-            <h3>Spoiler-Free</h3>
-            <p>Help readers decide whether a book is for them without ruining the story.</p>
-          </div>
-          <div class="why-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 5-5 2 2-5 5-2Z"/></svg>
-            <h3>Find Your Next Book</h3>
-            <p>Discover books based on genre, mood and reading preferences.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Latest Reviews -->
-    <section class="section section--alt">
-      <div class="container">
-        <div class="section__head">
-          <div>
-            <h2>Latest Reviews</h2>
-            <p>The most recent additions to the shelf.</p>
-          </div>
-        </div>
-        <div class="latest-list">
-
-          <a class="latest-item" href="book.html?id=gunahon-ka-devta" aria-label="View details for Gunahon Ka Devta by Dharamvir Bharati">
-            <div class="cover cover--romance" role="img" aria-label="Book cover for Gunahon Ka Devta by Dharamvir Bharati">
-              <span class="cover__title">Gunahon Ka Devta</span>
-              <span class="cover__author">Dharamvir Bharati</span>
-            </div>
-            <div class="latest-item__body">
-              <h3 class="latest-item__title">Gunahon Ka Devta (गुनाहों का देवता)</h3>
-              <p class="latest-item__meta">Dharamvir Bharati · Romance</p>
-              <p class="latest-item__desc">An intensely emotional, tragic love story set in Allahabad.</p>
-              <span class="btn btn--text" aria-hidden="true">Read Review</span>
-            </div>
-          </a>
-
-          <a class="latest-item" href="book.html?id=tamas" aria-label="View details for Tamas by Bhisham Sahni">
-            <div class="cover cover--historical" role="img" aria-label="Book cover for Tamas by Bhisham Sahni">
-              <span class="cover__title">Tamas</span>
-              <span class="cover__author">Bhisham Sahni</span>
-            </div>
-            <div class="latest-item__body">
-              <h3 class="latest-item__title">Tamas (तमस)</h3>
-              <p class="latest-item__meta">Bhisham Sahni · Historical Fiction</p>
-              <p class="latest-item__desc">A visceral, haunting examination of the days leading up to the partition riots of 1947.</p>
-              <span class="btn btn--text" aria-hidden="true">Read Review</span>
-            </div>
-          </a>
-
-          <a class="latest-item" href="book.html?id=chandrakanta" aria-label="View details for Chandrakanta by Devaki Nandan Khatri">
-            <div class="cover cover--fantasy" role="img" aria-label="Book cover for Chandrakanta by Devaki Nandan Khatri">
-              <span class="cover__title">Chandrakanta</span>
-              <span class="cover__author">Devaki Nandan Khatri</span>
-            </div>
-            <div class="latest-item__body">
-              <h3 class="latest-item__title">Chandrakanta (चंद्रकांता)</h3>
-              <p class="latest-item__meta">Devaki Nandan Khatri · Fantasy</p>
-              <p class="latest-item__desc">The pioneering masterwork of Indian fantasy and Tilasmi/Aiyyari fiction.</p>
-              <span class="btn btn--text" aria-hidden="true">Read Review</span>
-            </div>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-      <div class="container">
-        <h2>Never run out of books to read.</h2>
-        <p>Get occasional recommendations and discover your next favorite novel.</p>
-        <form class="newsletter-form">
-          <label for="newsletter-email" class="sr-only" style="position:absolute;left:-9999px;">Email address</label>
-          <input type="email" id="newsletter-email" placeholder="Enter your email" required />
-          <button type="submit" class="btn btn--primary">Subscribe</button>
-        </form>
-        <p class="newsletter-note">No spam — just books worth knowing about.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div>
-        <a href="index.html" class="logo">Kitaably</a>
-        <p>Find your next great read.</p>
-      </div>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="novels.html">Novels</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
+    <div class="hero__shelf" aria-hidden="true">
+      <div class="cover cover--romance"><span class="cover__title">Pride and Prejudice</span><span class="cover__author">Jane Austen</span></div>
+      <div class="cover cover--dystopian"><span class="cover__title">Dune</span><span class="cover__author">Frank Herbert</span></div>
+      <div class="cover cover--classic"><span class="cover__title">Godan (गोदान)</span><span class="cover__author">Munshi Premchand</span></div>
     </div>
-  </footer>
+  </div></section>
 
-  <script src="script.js"></script>
+  <section class="section" id="featured"><div class="container">
+    <div class="section__head"><div><h2>Featured Novels</h2><p>A few standout books across different genres.</p></div><a href="novels.html" class="btn btn--text">Browse all novels</a></div>
+    <div class="card-grid" id="featured-grid"></div>
+  </div></section>
+
+  <section class="section section--alt"><div class="container">
+    <div class="section__head"><div><h2>Top Rated</h2><p>Our highest-rated picks from the current Kitaably collection.</p></div><a href="novels.html" class="btn btn--text">See all</a></div>
+    <div class="card-grid" id="top-rated-grid"></div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="section__head"><div><h2>Recommended Reads</h2><p>A balanced mix for readers who want something new to try.</p></div><a href="novels.html" class="btn btn--text">Explore more</a></div>
+    <div class="card-grid" id="recommended-grid"></div>
+  </div></section>
+
+  <section class="section section--alt"><div class="container">
+    <div class="section__head"><div><h2>Browse by Genre</h2><p>Start with the kind of story you're in the mood for.</p></div></div>
+    <div class="genre-row">
+      <a class="genre-tile" style="background:var(--c-romance)" href="novels.html">Romance<span>Love stories, old and new</span></a>
+      <a class="genre-tile" style="background:var(--c-thriller)" href="novels.html">Mystery &amp; Thriller<span>Puzzles that keep you up late</span></a>
+      <a class="genre-tile" style="background:var(--c-fantasy)" href="novels.html">Fantasy<span>Worlds beyond this one</span></a>
+      <a class="genre-tile" style="background:var(--c-dystopian)" href="novels.html">Science Fiction<span>Ideas about what's next</span></a>
+      <a class="genre-tile" style="background:var(--c-classic)" href="novels.html">Classics<span>Books that have lasted</span></a>
+      <a class="genre-tile" style="background:var(--c-historical)" href="novels.html">Historical Fiction<span>The past, brought close</span></a>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="section__head"><div><h2>Why Kitaably?</h2><p>A simple way to discover your next book.</p></div></div>
+    <div class="why-grid">
+      <div class="why-item"><h3>Simple Reviews</h3><p>Easy-to-understand reviews without unnecessary complicated analysis.</p></div>
+      <div class="why-item"><h3>Spoiler-Free</h3><p>Decide whether a book is for you without ruining the story.</p></div>
+      <div class="why-item"><h3>Find Your Next Book</h3><p>Discover books using genre, language, rating and your reading preferences.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section section--alt"><div class="container">
+    <div class="section__head"><div><h2>Latest Reviews</h2><p>Recent additions to the Kitaably shelf.</p></div></div>
+    <div class="latest-list">
+      <a class="latest-item" href="book.html?id=gunahon-ka-devta"><div class="cover cover--romance"><span class="cover__title">Gunahon Ka Devta</span><span class="cover__author">Dharamvir Bharati</span></div><div class="latest-item__body"><h3 class="latest-item__title">Gunahon Ka Devta (गुनाहों का देवता)</h3><p class="latest-item__meta">Dharamvir Bharati · Romance</p><p class="latest-item__desc">An intensely emotional, tragic love story set in Allahabad.</p><span class="btn btn--text" aria-hidden="true">Read Review</span></div></a>
+      <a class="latest-item" href="book.html?id=tamas"><div class="cover cover--historical"><span class="cover__title">Tamas</span><span class="cover__author">Bhisham Sahni</span></div><div class="latest-item__body"><h3 class="latest-item__title">Tamas (तमस)</h3><p class="latest-item__meta">Bhisham Sahni · Historical Fiction</p><p class="latest-item__desc">A visceral, haunting examination of the days leading up to the partition riots of 1947.</p><span class="btn btn--text" aria-hidden="true">Read Review</span></div></a>
+      <a class="latest-item" href="book.html?id=chandrakanta"><div class="cover cover--fantasy"><span class="cover__title">Chandrakanta</span><span class="cover__author">Devaki Nandan Khatri</span></div><div class="latest-item__body"><h3 class="latest-item__title">Chandrakanta (चंद्रकांता)</h3><p class="latest-item__meta">Devaki Nandan Khatri · Fantasy</p><p class="latest-item__desc">The pioneering masterwork of Indian fantasy and Tilasmi/Aiyyari fiction.</p><span class="btn btn--text" aria-hidden="true">Read Review</span></div></a>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <div class="section__head"><div><h2>Get new reads in your inbox</h2><p>Join the Kitaably newsletter for occasional book recommendations.</p></div></div>
+    <form class="newsletter-form"><input type="email" placeholder="Your email address" aria-label="Your email address" required><button class="btn btn--primary" type="submit">Subscribe</button><p class="newsletter-note">No spam. Just books.</p></form>
+  </div></section>
+</main>
+
+<footer class="site-footer"><div class="container">
+  <div><a href="index.html" class="logo">Kitaably</a><p>Find your next great read.</p></div>
+  <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="novels.html">Novels</a></li><li><a href="about.html">About</a></li></ul>
+</div></footer>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof NOVELS === "undefined" || typeof bookCardHTML !== "function") return;
+  const featuredIds = ["pride-prejudice","and-then-there-were-none","hobbit","dune","godan","kite-runner"];
+  const recommendedIds = ["gunahon-ka-devta","chandrakanta","girl-with-dragon-tattoo","book-thief","1984","nirmala"];
+  const byId = (ids) => ids.map(id => NOVELS.find(book => book.id === id)).filter(Boolean);
+  const topRated = [...NOVELS].sort((a,b) => b.rating - a.rating || a.title.localeCompare(b.title)).slice(0,6);
+  const fill = (id, books) => { const el = document.getElementById(id); if (el) el.innerHTML = books.map(bookCardHTML).join(""); };
+  fill("featured-grid", byId(featuredIds));
+  fill("top-rated-grid", topRated);
+  fill("recommended-grid", byId(recommendedIds));
+  decorateBookCards();
+});
+</script>
 </body>
 </html>
