@@ -21,23 +21,6 @@ function initNav() {
   });
 }
 
-/* ---------- "Read Review" placeholder toggles ---------- */
-/* Works on any card that has a [data-review-toggle] button next to a
-   [data-review-panel] element. Full review pages are coming in a later
-   version of the site — for now this just reveals a short note in place. */
-function initReviewToggles(root = document) {
-  root.querySelectorAll("[data-review-toggle]").forEach((btn) => {
-    if (btn.dataset.bound) return;
-    btn.dataset.bound = "true";
-    btn.addEventListener("click", () => {
-      const panel = btn.closest(".book-card, .latest-item")?.querySelector("[data-review-panel]");
-      if (!panel) return;
-      const isOpen = panel.classList.toggle("is-open");
-      btn.textContent = isOpen ? "Hide review" : "Read Review";
-    });
-  });
-}
-
 /* ---------- newsletter (visual only, no backend) ---------- */
 function initNewsletter() {
   const form = document.querySelector(".newsletter-form");
@@ -299,7 +282,7 @@ function starString(rating) {
 
 function bookCardHTML(book) {
   return `
-    <article class="book-card" data-title="${book.title.toLowerCase()}" data-author="${book.author.toLowerCase()}" data-genre="${book.genre}" data-rating="${book.rating}">
+    <a class="book-card" href="book.html?id=${book.id}" aria-label="View details for ${book.title} by ${book.author}" data-title="${book.title.toLowerCase()}" data-author="${book.author.toLowerCase()}" data-genre="${book.genre}" data-rating="${book.rating}">
       <div class="cover cover--${book.genreClass}" role="img" aria-label="Book cover for ${book.title} by ${book.author}">
         <span class="cover__title">${book.title}</span>
         <span class="cover__author">${book.author}</span>
@@ -310,10 +293,9 @@ function bookCardHTML(book) {
         <p class="book-card__author">${book.author}</p>
         <p class="rating"><span class="rating__stars" aria-hidden="true">${starString(book.rating)}</span> ${book.rating.toFixed(1)} / 5</p>
         <p class="book-card__desc">${book.desc}</p>
-        <p class="book-card__review" data-review-panel>${book.review}</p>
-        <button class="btn btn--text" data-review-toggle type="button">Read Review</button>
+        <span class="btn btn--text" aria-hidden="true">Read Review</span>
       </div>
-    </article>
+    </a>
   `;
 }
 
@@ -333,7 +315,6 @@ function initNovelsPage() {
   let query = "";
 
   grid.innerHTML = NOVELS.map(bookCardHTML).join("");
-  initReviewToggles(grid);
 
   function applyFilters() {
     const cards = grid.querySelectorAll(".book-card");
@@ -395,9 +376,67 @@ function initNovelsPage() {
   applyFilters();
 }
 
+/* ---------- Book detail page (book.html?id=...) ---------- */
+function initBookDetailPage() {
+  const container = document.querySelector("[data-book-detail]");
+  if (!container) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const book = NOVELS.find((b) => b.id === id);
+
+  if (!book) {
+    container.innerHTML = `
+      <div class="book-detail__not-found">
+        <h1>Novel not found</h1>
+        <p>We couldn't find a novel matching that link.</p>
+        <a class="btn btn--primary" href="novels.html">Back to Novels</a>
+      </div>
+    `;
+    return;
+  }
+
+  document.title = `${book.title} — Kitaably`;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute("content", `${book.title} by ${book.author} — ${book.desc}`);
+
+  container.innerHTML = `
+    <div class="book-detail__cover-col">
+      <div class="cover cover--large cover--${book.genreClass}" role="img" aria-label="Book cover for ${book.title} by ${book.author}">
+        <span class="cover__title">${book.title}</span>
+        <span class="cover__author">${book.author}</span>
+      </div>
+    </div>
+    <div class="book-detail__info">
+      <p class="book-detail__genre">${book.genre}</p>
+      <h1 class="book-detail__title">${book.title}</h1>
+      <p class="book-detail__author">${book.author}</p>
+
+      <dl class="book-detail__meta">
+        <div><dt>Author</dt><dd>${book.author}</dd></div>
+        <div><dt>Language</dt><dd>${book.language}</dd></div>
+        <div><dt>Category</dt><dd>${book.genre}</dd></div>
+        <div><dt>Rating</dt><dd><span class="rating__stars" aria-hidden="true">${starString(book.rating)}</span> ${book.rating.toFixed(1)} / 5</dd></div>
+      </dl>
+
+      <div class="book-detail__section">
+        <h2>My Review</h2>
+        <p>${book.review}</p>
+      </div>
+
+      <div class="book-detail__section">
+        <h2>About this Book</h2>
+        <p>${book.desc}</p>
+      </div>
+
+      <a class="btn btn--ghost" href="novels.html">Back to Novels</a>
+    </div>
+  `;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
-  initReviewToggles();
   initNewsletter();
   initNovelsPage();
+  initBookDetailPage();
 });
