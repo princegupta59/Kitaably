@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://princegupta59.github.io/Kitaably/</loc>
-  </url>
-  <url>
-    <loc>https://princegupta59.github.io/Kitaably/novels.html</loc>
-  </url>
-  <url>
-    <loc>https://princegupta59.github.io/Kitaably/about.html</loc>
-  </url>
+  <url><loc>https://princegupta59.github.io/Kitaably/</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/novels.html</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/about.html</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=pride-prejudice</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=gunahon-ka-devta</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=me-before-you</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=and-then-there-were-none</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=girl-with-dragon-tattoo</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=khoon-ka-badla-khoon</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=hobbit</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=chandrakanta</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=harry-potter-sorcerers-stone</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=1984</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=dune</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=bhookha-jahaz</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=godan</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=to-kill-a-mockingbird</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=nirmala</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=crime-and-punishment</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=tamas</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=book-thief</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=maila-aanchal</loc></url>
+  <url><loc>https://princegupta59.github.io/Kitaably/book.html?id=kite-runner</loc></url>
 </urlset>
