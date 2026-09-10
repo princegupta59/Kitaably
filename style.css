@@ -1,0 +1,594 @@
+/* ==========================================================================
+   Kitaably — shared stylesheet
+   Palette: paper & ink, with a small family of muted, earthy accent colors
+   used to color-code genres throughout the site.
+   ========================================================================== */
+
+:root {
+  /* base */
+  --paper: #F6F2E7;
+  --paper-alt: #FBF9F3;
+  --ink: #22221D;
+  --ink-soft: #58554C;
+  --ink-faint: #8A8577;
+  --line: #DDD5C1;
+  --line-strong: #C7BCA3;
+
+  /* primary accents */
+  --green: #2F4538;
+  --green-deep: #1E2C24;
+  --brass: #A67C3D;
+
+  /* genre accent family */
+  --c-fiction: #3E6259;
+  --c-historical: #A67C3D;
+  --c-dystopian: #2C3A4B;
+  --c-thriller: #5B4468;
+  --c-classic: #2F4538;
+  --c-fantasy: #8B4A3C;
+  --c-romance: #8B4A57;
+
+  --radius-s: 3px;
+  --radius-m: 6px;
+  --shadow-cover: 0 10px 24px -12px rgba(34, 34, 29, 0.35);
+  --shadow-card: 0 1px 0 rgba(34, 34, 29, 0.06);
+
+  --maxw: 1160px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Public Sans", -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 560;
+  line-height: 1.12;
+  margin: 0 0 0.5em;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1em; color: var(--ink-soft); max-width: 62ch; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: var(--radius-s);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.btn--primary {
+  background: var(--green);
+  color: var(--paper-alt);
+}
+.btn--primary:hover { background: var(--green-deep); }
+.btn--ghost {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.btn--ghost:hover { background: var(--ink); color: var(--paper-alt); }
+.btn--small { padding: 9px 16px; font-size: 13.5px; }
+.btn--text {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--green);
+  font-weight: 600;
+  font-size: 14.5px;
+  border-bottom: 1px solid var(--green);
+  border-radius: 0;
+}
+.btn--text:hover { color: var(--green-deep); border-color: var(--green-deep); }
+
+/* ---------- header / nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(246, 242, 231, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+.logo {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 23px;
+  font-weight: 620;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.nav-menu a:hover,
+.nav-menu a[aria-current="page"] {
+  color: var(--ink);
+  border-color: var(--brass);
+}
+.nav-toggle {
+  display: none;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-toggle span { top: 16px; }
+.nav-toggle span::before { top: -8px; }
+.nav-toggle span::after { top: 8px; }
+.nav-toggle[aria-expanded="true"] span { background: transparent; }
+.nav-toggle[aria-expanded="true"] span::before { transform: translateY(8px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span::after { transform: translateY(-8px) rotate(-45deg); }
+
+/* ---------- hero ---------- */
+.hero {
+  padding: 76px 0 88px;
+}
+.hero .container {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+.hero__content { flex: 1 1 480px; max-width: 560px; }
+.hero__eyebrow {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  color: var(--brass);
+  font-size: 17px;
+  margin: 0 0 14px;
+}
+.hero__content h1 {
+  font-size: clamp(38px, 5vw, 56px);
+  margin-bottom: 22px;
+}
+.hero__content p { font-size: 18px; margin-bottom: 32px; }
+.hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero__shelf {
+  flex: 1 1 320px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 22px;
+  min-height: 300px;
+  position: relative;
+}
+.hero__shelf::after {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 18px;
+  height: 10px;
+  background: linear-gradient(180deg, var(--line-strong), transparent);
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.6;
+}
+
+/* ---------- book cover (CSS-drawn, no images required) ---------- */
+.cover {
+  --cover-color: var(--green);
+  width: 140px;
+  aspect-ratio: 2 / 3;
+  background: var(--cover-color);
+  border-radius: 2px 5px 5px 2px;
+  box-shadow: var(--shadow-cover), inset -3px 0 0 rgba(0,0,0,0.18);
+  color: var(--paper-alt);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 14px;
+  position: relative;
+  flex-shrink: 0;
+}
+.cover::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.22);
+}
+.cover__title {
+  font-family: "Fraunces", serif;
+  font-weight: 560;
+  font-size: 15px;
+  line-height: 1.2;
+}
+.cover__author {
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+.cover--fiction     { --cover-color: var(--c-fiction); }
+.cover--historical  { --cover-color: var(--c-historical); }
+.cover--dystopian   { --cover-color: var(--c-dystopian); }
+.cover--thriller    { --cover-color: var(--c-thriller); }
+.cover--classic     { --cover-color: var(--c-classic); }
+.cover--fantasy     { --cover-color: var(--c-fantasy); }
+.cover--romance     { --cover-color: var(--c-romance); }
+
+.hero__shelf .cover:nth-child(1) { transform: rotate(-6deg); }
+.hero__shelf .cover:nth-child(2) { transform: translateY(-18px) rotate(3deg); width: 128px; }
+.hero__shelf .cover:nth-child(3) { transform: rotate(8deg); width: 118px; }
+
+/* ---------- sections ---------- */
+.section { padding: 84px 0; }
+.section--tight { padding: 64px 0; }
+.section--alt { background: var(--paper-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.section__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.section__head h2 { font-size: clamp(28px, 3.4vw, 36px); }
+.section__head p { margin: 8px 0 0; }
+
+/* ---------- book card grid ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+}
+.book-card {
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 22px;
+  display: flex;
+  gap: 18px;
+}
+.book-card__body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.book-card__genre {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brass);
+  margin-bottom: 6px;
+}
+.book-card__title {
+  font-family: "Fraunces", serif;
+  font-size: 19px;
+  font-weight: 560;
+  margin: 0 0 2px;
+  line-height: 1.25;
+}
+.book-card__author { font-size: 13.5px; color: var(--ink-faint); margin-bottom: 10px; }
+.rating {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rating__stars { color: var(--brass); letter-spacing: 1px; }
+.book-card__desc { font-size: 14.5px; margin-bottom: 14px; flex: 1; }
+.book-card__review {
+  display: none;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  background: var(--paper);
+  border-left: 2px solid var(--brass);
+  padding: 10px 12px;
+  margin: 0 0 14px;
+}
+.book-card__review.is-open { display: block; }
+
+/* ---------- genre browse ---------- */
+.genre-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+}
+.genre-tile {
+  display: block;
+  text-decoration: none;
+  padding: 20px 20px 18px;
+  border-radius: var(--radius-s);
+  color: var(--paper-alt);
+  font-family: "Fraunces", serif;
+  font-size: 18px;
+  font-weight: 560;
+  position: relative;
+  overflow: hidden;
+}
+.genre-tile span {
+  display: block;
+  font-family: "Public Sans", sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  margin-top: 4px;
+}
+
+/* ---------- why kitaably ---------- */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+.why-item svg { width: 34px; height: 34px; margin-bottom: 16px; color: var(--green); }
+.why-item h3 { font-size: 20px; margin-bottom: 8px; }
+.why-item p { font-size: 14.5px; }
+
+/* ---------- latest reviews (list style) ---------- */
+.latest-list { display: flex; flex-direction: column; }
+.latest-item {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+.latest-item:last-child { border-bottom: 1px solid var(--line); }
+.latest-item .cover { width: 72px; box-shadow: none; }
+.latest-item .cover .cover__title { font-size: 10.5px; }
+.latest-item .cover .cover__author { font-size: 8.5px; }
+.latest-item__body { flex: 1; min-width: 0; }
+.latest-item__title { font-family: "Fraunces", serif; font-size: 18px; margin: 0 0 2px; }
+.latest-item__meta { font-size: 12.5px; color: var(--ink-faint); margin-bottom: 8px; }
+.latest-item__desc { font-size: 14px; margin: 0; }
+
+/* ---------- newsletter ---------- */
+.newsletter {
+  background: var(--green);
+  color: var(--paper-alt);
+  padding: 68px 0;
+}
+.newsletter .container { max-width: 680px; text-align: center; }
+.newsletter h2 { color: var(--paper-alt); font-size: clamp(26px, 3vw, 32px); }
+.newsletter p { color: rgba(251,249,243,0.82); margin: 0 auto 28px; }
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.newsletter-form input[type="email"] {
+  flex: 1 1 260px;
+  padding: 13px 16px;
+  border-radius: var(--radius-s);
+  border: 1px solid rgba(251,249,243,0.35);
+  background: rgba(251,249,243,0.08);
+  color: var(--paper-alt);
+  font-size: 15px;
+}
+.newsletter-form input::placeholder { color: rgba(251,249,243,0.6); }
+.newsletter-form .btn--primary { background: var(--brass); color: var(--ink); }
+.newsletter-form .btn--primary:hover { background: #B98F4D; }
+.newsletter-note { font-size: 13px; margin-top: 14px; color: rgba(251,249,243,0.7); }
+
+/* ---------- footer ---------- */
+.site-footer {
+  padding: 44px 0;
+  border-top: 1px solid var(--line);
+}
+.site-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.site-footer .logo { font-size: 19px; }
+.site-footer p { margin: 4px 0 0; font-size: 13.5px; }
+.footer-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+.footer-links a { text-decoration: none; font-size: 14px; color: var(--ink-soft); }
+.footer-links a:hover { color: var(--ink); }
+
+/* ---------- novels page: search + filters ---------- */
+.page-head { padding: 56px 0 40px; }
+.page-head h1 { font-size: clamp(32px, 4.4vw, 44px); }
+.page-head p { font-size: 17px; }
+
+.toolbar { margin-bottom: 40px; }
+.search-bar {
+  position: relative;
+  margin-bottom: 24px;
+}
+.search-bar input {
+  width: 100%;
+  padding: 14px 4px;
+  font-size: 17px;
+  font-family: "Fraunces", serif;
+  border: none;
+  border-bottom: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--ink);
+}
+.search-bar input::placeholder { color: var(--ink-faint); }
+.search-bar input:focus { outline: none; border-color: var(--green); }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  align-items: baseline;
+}
+.filter-group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.filter-group__label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-faint);
+  margin-right: 4px;
+}
+.filter-btn {
+  background: none;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-soft);
+  border-radius: var(--radius-s);
+  padding: 7px 14px;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.filter-btn:hover { border-color: var(--ink); color: var(--ink); }
+.filter-btn.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper-alt);
+}
+
+.results-count { font-size: 13.5px; color: var(--ink-faint); margin-bottom: 20px; }
+.no-results {
+  display: none;
+  text-align: center;
+  padding: 64px 20px;
+  color: var(--ink-soft);
+  font-family: "Fraunces", serif;
+  font-size: 18px;
+}
+.no-results.is-visible { display: block; }
+
+/* ---------- about page ---------- */
+.about-hero { padding: 60px 0 20px; max-width: 720px; }
+.about-hero h1 { font-size: clamp(32px, 4.4vw, 44px); }
+.about-hero p { font-size: 18px; }
+.about-body { max-width: 680px; }
+.about-body h2 { font-size: 26px; margin-top: 8px; }
+.about-body p { font-size: 16px; }
+.pull {
+  border-left: 3px solid var(--brass);
+  padding: 4px 0 4px 22px;
+  margin: 32px 0;
+}
+.pull p {
+  font-family: "Fraunces", serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--ink);
+  max-width: 46ch;
+}
+.expect-list { list-style: none; margin: 0; padding: 0; max-width: 680px; }
+.expect-list li {
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 14px;
+  font-size: 15.5px;
+  color: var(--ink-soft);
+}
+.expect-list li:last-child { border-bottom: 1px solid var(--line); }
+.expect-list li::before {
+  content: "◆";
+  color: var(--brass);
+  font-size: 10px;
+  transform: translateY(6px);
+}
+.cta-band {
+  text-align: center;
+  padding: 76px 0;
+}
+.cta-band h2 { font-size: clamp(26px, 3.4vw, 34px); margin-bottom: 24px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 860px) {
+  .nav-menu {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: var(--paper-alt);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 8px 28px 20px;
+    display: none;
+  }
+  .nav-menu.is-open { display: flex; }
+  .nav-menu li { width: 100%; }
+  .nav-menu a { display: block; padding: 12px 0; }
+  .nav-toggle { display: block; }
+
+  .hero .container { flex-direction: column; text-align: left; }
+  .hero__shelf { min-height: 220px; margin-top: 12px; }
+
+  .book-card { flex-direction: column; }
+  .book-card .cover { width: 96px; }
+
+  .latest-item { align-items: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 56px; }
+  .section { padding: 60px 0; }
+  .hero__actions .btn { flex: 1 1 auto; justify-content: center; }
+  .hero__shelf .cover:nth-child(2) { display: none; }
+}

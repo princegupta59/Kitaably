@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Novels &amp; Book Reviews | Kitaably</title>
+  <meta name="description" content="Browse and search Kitaably's collection of novels by title, author or genre, and filter by rating to find your next read." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,620;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Kitaably</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="novels.html" aria-current="page">Novels</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <h1>Explore Novels</h1>
+        <p>Browse our collection of carefully selected novels and discover your next read.</p>
+      </div>
+    </section>
+
+    <section class="section--tight">
+      <div class="container">
+        <div class="toolbar">
+          <div class="search-bar">
+            <label for="novel-search" class="sr-only" style="position:absolute;left:-9999px;">Search by title or author</label>
+            <input type="text" id="novel-search" placeholder="Search by title or author…" data-novels-search autocomplete="off" />
+          </div>
+
+          <div class="filters">
+            <div class="filter-group" role="group" aria-label="Filter by genre">
+              <span class="filter-group__label">Genre</span>
+              <button class="filter-btn is-active" data-genre-filter="All" type="button">All</button>
+              <button class="filter-btn" data-genre-filter="Romance" type="button">Romance</button>
+              <button class="filter-btn" data-genre-filter="Mystery &amp; Thriller" type="button">Mystery &amp; Thriller</button>
+              <button class="filter-btn" data-genre-filter="Fantasy" type="button">Fantasy</button>
+              <button class="filter-btn" data-genre-filter="Science Fiction" type="button">Science Fiction</button>
+              <button class="filter-btn" data-genre-filter="Classic" type="button">Classics</button>
+              <button class="filter-btn" data-genre-filter="Historical Fiction" type="button">Historical Fiction</button>
+            </div>
+
+            <div class="filter-group" role="group" aria-label="Filter by rating">
+              <span class="filter-group__label">Rating</span>
+              <button class="filter-btn is-active" data-rating-filter="All" type="button">All</button>
+              <button class="filter-btn" data-rating-filter="4+" type="button">4+ stars</button>
+              <button class="filter-btn" data-rating-filter="4.5+" type="button">4.5+ stars</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="results-count" data-results-count></p>
+
+        <div class="card-grid" data-novels-grid aria-live="polite"></div>
+
+        <p class="no-results" data-no-results>No novels found. Try another search.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <a href="index.html" class="logo">Kitaably</a>
+        <p>Find your next great read.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="novels.html">Novels</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

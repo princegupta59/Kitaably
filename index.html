@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kitaably — Find Your Next Great Read</title>
+  <meta name="description" content="Kitaably helps you discover novels worth reading, with simple, honest and spoiler-free reviews across fiction, mystery, classics and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,620;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Kitaably</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="novels.html">Novels</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <p class="hero__eyebrow">A novel discovery &amp; review site</p>
+          <h1>Find your next great read.</h1>
+          <p>Discover novels worth reading with simple, honest and spoiler-free reviews.</p>
+          <div class="hero__actions">
+            <a href="novels.html" class="btn btn--primary">Explore Novels</a>
+            <a href="about.html" class="btn btn--ghost">About Kitaably</a>
+          </div>
+        </div>
+        <div class="hero__shelf" aria-hidden="true">
+          <div class="cover cover--dystopian">
+            <span class="cover__title">1984</span>
+            <span class="cover__author">George Orwell</span>
+          </div>
+          <div class="cover cover--fantasy">
+            <span class="cover__title">The Hobbit</span>
+            <span class="cover__author">J.R.R. Tolkien</span>
+          </div>
+          <div class="cover cover--fiction">
+            <span class="cover__title">The Alchemist</span>
+            <span class="cover__author">Paulo Coelho</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Novels -->
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <h2>Featured Novels</h2>
+            <p>A handful of novels we keep coming back to, across a few different genres.</p>
+          </div>
+          <a href="novels.html" class="btn btn--text">Browse all novels</a>
+        </div>
+
+        <div class="card-grid">
+
+          <article class="book-card">
+            <div class="cover cover--fiction" role="img" aria-label="Book cover for The Alchemist by Paulo Coelho">
+              <span class="cover__title">The Alchemist</span>
+              <span class="cover__author">Paulo Coelho</span>
+            </div>
+            <div class="book-card__body">
+              <p class="book-card__genre">Fiction</p>
+              <h3 class="book-card__title">The Alchemist</h3>
+              <p class="book-card__author">Paulo Coelho</p>
+              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★☆</span> 4.3 / 5</p>
+              <p class="book-card__desc">A shepherd sets off across unfamiliar country chasing a recurring dream, and learns to read the small signs along the way.</p>
+              <p class="book-card__review" data-review-panel>Full spoiler-free review coming soon — we're polishing our thoughts on <em>The Alchemist</em>.</p>
+              <button class="btn btn--text" data-review-toggle type="button">Read Review</button>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="cover cover--historical" role="img" aria-label="Book cover for The Kite Runner by Khaled Hosseini">
+              <span class="cover__title">The Kite Runner</span>
+              <span class="cover__author">Khaled Hosseini</span>
+            </div>
+            <div class="book-card__body">
+              <p class="book-card__genre">Historical Fiction</p>
+              <h3 class="book-card__title">The Kite Runner</h3>
+              <p class="book-card__author">Khaled Hosseini</p>
+              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★★</span> 4.6 / 5</p>
+              <p class="book-card__desc">A friendship in 1970s Kabul casts a long shadow, and one man returns years later to try to make things right.</p>
+              <p class="book-card__review" data-review-panel>Full spoiler-free review coming soon — we're polishing our thoughts on <em>The Kite Runner</em>.</p>
+              <button class="btn btn--text" data-review-toggle type="button">Read Review</button>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="cover cover--dystopian" role="img" aria-label="Book cover for 1984 by George Orwell">
+              <span class="cover__title">1984</span>
+              <span class="cover__author">George Orwell</span>
+            </div>
+            <div class="book-card__body">
+              <p class="book-card__genre">Dystopian</p>
+              <h3 class="book-card__title">1984</h3>
+              <p class="book-card__author">George Orwell</p>
+              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★★</span> 4.7 / 5</p>
+              <p class="book-card__desc">In a society where every move is watched, one man starts to keep a private record of his own thoughts.</p>
+              <p class="book-card__review" data-review-panel>Full spoiler-free review coming soon — we're polishing our thoughts on <em>1984</em>.</p>
+              <button class="btn btn--text" data-review-toggle type="button">Read Review</button>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="cover cover--historical" role="img" aria-label="Book cover for The Book Thief by Markus Zusak">
+              <span class="cover__title">The Book Thief</span>
+              <span class="cover__author">Markus Zusak</span>
+            </div>
+            <div class="book-card__body">
+              <p class="book-card__genre">Historical Fiction</p>
+              <h3 class="book-card__title">The Book Thief</h3>
+              <p class="book-card__author">Markus Zusak</p>
+              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★★</span> 4.6 / 5</p>
+              <p class="book-card__desc">A young girl in wartime Germany finds comfort in stolen books, narrated by an unusually observant voice.</p>
+              <p class="book-card__review" data-review-panel>Full spoiler-free review coming soon — we're polishing our thoughts on <em>The Book Thief</em>.</p>
+              <button class="btn btn--text" data-review-toggle type="button">Read Review</button>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="cover cover--thriller" role="img" aria-label="Book cover for The Silent Patient by Alex Michaelides">
+              <span class="cover__title">The Silent Patient</span>
+              <span class="cover__author">Alex Michaelides</span>
+            </div>
+            <div class="book-card__body">
+              <p class="book-card__genre">Mystery &amp; Thriller</p>
+              <h3 class="book-card__title">The Silent Patient</h3>
+              <p class="book-card__author">Alex Michaelides</p>
+              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★☆</span> 4.2 / 5</p>
+              <p class="book-card__desc">A woman stops speaking the night her husband dies, and the psychotherapist assigned to her case can't let the silence go.</p>
+              <p class="book-card__review" data-review-panel>Full spoiler-free review coming soon — we're polishing our thoughts on <em>The Silent Patient</em>.</p>
+              <button class="btn btn--text" data-review-toggle type="button">Read Review</button>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="cover cover--classic" role="img" aria-label="Book cover for The Great Gatsby by F. Scott Fitzgerald">
+              <span class="cover__title">The Great Gatsby</span>
+              <span class="cover__author">F. Scott Fitzgerald</span>
+            </div>
+            <div class="book-card__body">
+              <p class="book-card__genre">Classic</p>
+              <h3 class="book-card__title">The Great Gatsby</h3>
+              <p class="book-card__author">F. Scott Fitzgerald</p>
+              <p class="rating"><span class="rating__stars" aria-hidden="true">★★★★☆</span> 4.1 / 5</p>
+              <p class="book-card__desc">A newcomer to Long Island gets pulled into his neighbor's glittering parties, and the story behind them.</p>
+              <p class="book-card__review" data-review-panel>Full spoiler-free review coming soon — we're polishing our thoughts on <em>The Great Gatsby</em>.</p>
+              <button class="btn btn--text" data-review-toggle type="button">Read Review</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Browse by Genre -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <h2>Browse by Genre</h2>
+            <p>Not sure what you're in the mood for? Start with a shelf.</p>
+          </div>
+        </div>
+        <div class="genre-row">
+          <a class="genre-tile" style="background:var(--c-romance)" href="novels.html">Romance<span>Love stories, old and new</span></a>
+          <a class="genre-tile" style="background:var(--c-thriller)" href="novels.html">Mystery &amp; Thriller<span>Puzzles that keep you up late</span></a>
+          <a class="genre-tile" style="background:var(--c-fantasy)" href="novels.html">Fantasy<span>Worlds beyond this one</span></a>
+          <a class="genre-tile" style="background:var(--c-dystopian)" href="novels.html">Science Fiction<span>Ideas about what's next</span></a>
+          <a class="genre-tile" style="background:var(--c-classic)" href="novels.html">Classics<span>Books that have lasted</span></a>
+          <a class="genre-tile" style="background:var(--c-historical)" href="novels.html">Historical Fiction<span>The past, brought close</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Kitaably -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <h2>Why Kitaably?</h2>
+          </div>
+        </div>
+        <div class="why-grid">
+          <div class="why-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 5c3-1.5 6-1.5 9 0v14c-3-1.5-6-1.5-9 0V5Z"/><path d="M21 5c-3-1.5-6-1.5-9 0v14c3-1.5 6-1.5 9 0V5Z"/></svg>
+            <h3>Simple Reviews</h3>
+            <p>Easy-to-understand reviews without unnecessary complicated analysis.</p>
+          </div>
+          <div class="why-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><path d="M4 4l16 16"/></svg>
+            <h3>Spoiler-Free</h3>
+            <p>Help readers decide whether a book is for them without ruining the story.</p>
+          </div>
+          <div class="why-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 5-5 2 2-5 5-2Z"/></svg>
+            <h3>Find Your Next Book</h3>
+            <p>Discover books based on genre, mood and reading preferences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Reviews -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <h2>Latest Reviews</h2>
+            <p>The most recent additions to the shelf.</p>
+          </div>
+        </div>
+        <div class="latest-list">
+
+          <div class="latest-item">
+            <div class="cover cover--thriller" role="img" aria-label="Book cover for The Silent Patient by Alex Michaelides">
+              <span class="cover__title">The Silent Patient</span>
+              <span class="cover__author">Alex Michaelides</span>
+            </div>
+            <div class="latest-item__body">
+              <h3 class="latest-item__title">The Silent Patient</h3>
+              <p class="latest-item__meta">Alex Michaelides · Mystery &amp; Thriller</p>
+              <p class="latest-item__desc">A woman stops speaking the night her husband dies, and the psychotherapist assigned to her case can't let the silence go.</p>
+              <p class="book-card__review" data-review-panel>Full spoiler-free review coming soon — we're polishing our thoughts on <em>The Silent Patient</em>.</p>
+              <button class="btn btn--text" data-review-toggle type="button">Read Review</button>
+            </div>
+          </div>
+
+          <div class="latest-item">
+            <div class="cover cover--dystopian" role="img" aria-label="Book cover for 1984 by George Orwell">
+              <span class="cover__title">1984</span>
+              <span class="cover__author">George Orwell</span>
+            </div>
+            <div class="latest-item__body">
+              <h3 class="latest-item__title">1984</h3>
+              <p class="latest-item__meta">George Orwell · Dystopian</p>
+              <p class="latest-item__desc">In a society where every move is watched, one man starts to keep a private record of his own thoughts.</p>
+              <p class="book-card__review" data-review-panel>Full spoiler-free review coming soon — we're polishing our thoughts on <em>1984</em>.</p>
+              <button class="btn btn--text" data-review-toggle type="button">Read Review</button>
+            </div>
+          </div>
+
+          <div class="latest-item">
+            <div class="cover cover--fiction" role="img" aria-label="Book cover for The Alchemist by Paulo Coelho">
+              <span class="cover__title">The Alchemist</span>
+              <span class="cover__author">Paulo Coelho</span>
+            </div>
+            <div class="latest-item__body">
+              <h3 class="latest-item__title">The Alchemist</h3>
+              <p class="latest-item__meta">Paulo Coelho · Fiction</p>
+              <p class="latest-item__desc">A shepherd sets off across unfamiliar country chasing a recurring dream, and learns to read the small signs along the way.</p>
+              <p class="book-card__review" data-review-panel>Full spoiler-free review coming soon — we're polishing our thoughts on <em>The Alchemist</em>.</p>
+              <button class="btn btn--text" data-review-toggle type="button">Read Review</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+      <div class="container">
+        <h2>Never run out of books to read.</h2>
+        <p>Get occasional recommendations and discover your next favorite novel.</p>
+        <form class="newsletter-form">
+          <label for="newsletter-email" class="sr-only" style="position:absolute;left:-9999px;">Email address</label>
+          <input type="email" id="newsletter-email" placeholder="Enter your email" required />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+        <p class="newsletter-note">No spam — just books worth knowing about.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <a href="index.html" class="logo">Kitaably</a>
+        <p>Find your next great read.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="novels.html">Novels</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
