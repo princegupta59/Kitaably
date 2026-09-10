@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Reading List | Kitaably</title>
+  <meta name="description" content="Your saved Kitaably novels and book recommendations in one place." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,620;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Kitaably</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="novels.html">Novels</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="my-list.html" aria-current="page">My List</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head reading-list-page-head">
+      <div class="container">
+        <h1>My Reading List</h1>
+        <p>Save novels you want to come back to. Your list is stored in this browser.</p>
+      </div>
+    </section>
+
+    <section class="section--tight">
+      <div class="container">
+        <p class="reading-list-count" data-reading-list-page-count>0 saved novels</p>
+        <p class="sr-only" data-reading-list-live aria-live="polite"></p>
+
+        <div class="card-grid" data-reading-list-grid aria-live="polite"></div>
+
+        <div class="reading-list-empty" data-reading-list-empty>
+          <h2>Your list is empty</h2>
+          <p>Browse the novels and tap the heart on any book you want to save here.</p>
+          <a class="btn btn--primary" href="novels.html">Explore Novels</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <a href="index.html" class="logo">Kitaably</a>
+        <p>Find your next great read.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="novels.html">Novels</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="my-list.html">My Reading List</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
