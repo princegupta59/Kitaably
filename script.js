@@ -2,11 +2,124 @@
    Kitaably — shared behaviour
    ========================================================================== */
 
-/* ---------- mobile nav ---------- */
+const READING_LIST_KEY = "kitaablyReadingList";
+
+function getReadingList() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(READING_LIST_KEY) || "[]");
+    return Array.isArray(saved) ? saved : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveReadingList(list) {
+  try {
+    localStorage.setItem(READING_LIST_KEY, JSON.stringify(list));
+  } catch (error) {
+    // Ignore storage errors so the rest of the site keeps working.
+  }
+}
+
+function isInReadingList(id) {
+  return getReadingList().includes(id);
+}
+
+function toggleReadingList(id) {
+  const list = getReadingList();
+  const index = list.indexOf(id);
+  let added = false;
+
+  if (index === -1) {
+    list.push(id);
+    added = true;
+  } else {
+    list.splice(index, 1);
+  }
+
+  saveReadingList(list);
+  updateReadingListUI();
+  return added;
+}
+
+function readingListCount() {
+  return getReadingList().length;
+}
+
+function updateReadingListUI() {
+  const count = readingListCount();
+
+  document.querySelectorAll("[data-reading-list-count]").forEach((el) => {
+    el.textContent = String(count);
+    el.hidden = count === 0;
+  });
+
+  document.querySelectorAll("[data-reading-list-button]").forEach((button) => {
+    const id = button.dataset.readingListButton;
+    const saved = isInReadingList(id);
+    button.classList.toggle("is-saved", saved);
+    button.setAttribute("aria-pressed", String(saved));
+    button.setAttribute("aria-label", saved ? "Remove from My Reading List" : "Add to My Reading List");
+    button.title = saved ? "Remove from My Reading List" : "Add to My Reading List";
+    button.querySelector(".reading-list-icon").textContent = saved ? "♥" : "♡";
+  });
+}
+
+function getBookIdFromHref(href) {
+  try {
+    const url = new URL(href, window.location.href);
+    return url.searchParams.get("id");
+  } catch (error) {
+    const match = href.match(/[?&]id=([^&]+)/);
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+}
+
+function attachReadingListButton(card, bookId) {
+  if (!card || !bookId || card.querySelector("[data-reading-list-button]")) return;
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "reading-list-button";
+  button.dataset.readingListButton = bookId;
+  button.setAttribute("aria-pressed", String(isInReadingList(bookId)));
+  button.innerHTML = '<span class="reading-list-icon" aria-hidden="true">♡</span><span class="sr-only">Add to My Reading List</span>';
+
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const added = toggleReadingList(bookId);
+
+    const liveNote = document.querySelector("[data-reading-list-live]");
+    const book = NOVELS.find((item) => item.id === bookId);
+    if (liveNote && book) {
+      liveNote.textContent = added ? `${book.title} added to My Reading List.` : `${book.title} removed from My Reading List.`;
+    }
+  });
+
+  card.appendChild(button);
+}
+
+function decorateBookCards() {
+  document.querySelectorAll(".book-card").forEach((card) => {
+    const href = card.getAttribute("href");
+    const id = href ? getBookIdFromHref(href) : null;
+    if (id) attachReadingListButton(card, id);
+  });
+  updateReadingListUI();
+}
+
+/* ---------- navigation ---------- */
 function initNav() {
   const toggle = document.querySelector(".nav-toggle");
   const menu = document.querySelector(".nav-menu");
   if (!toggle || !menu) return;
+
+  if (!menu.querySelector('a[href="my-list.html"]')) {
+    const item = document.createElement("li");
+    item.innerHTML = '<a href="my-list.html">My List <span class="nav-list-count" data-reading-list-count hidden>0</span></a>';
+    menu.appendChild(item);
+  }
 
   toggle.addEventListener("click", () => {
     const isOpen = menu.classList.toggle("is-open");
@@ -19,6 +132,8 @@ function initNav() {
       toggle.setAttribute("aria-expanded", "false");
     });
   });
+
+  updateReadingListUI();
 }
 
 /* ---------- newsletter (visual only, no backend) ---------- */
@@ -40,7 +155,7 @@ function initNewsletter() {
   });
 }
 
-/* ---------- shared novel data (used on the Novels page) ---------- */
+/* ---------- shared novel data (used across the site) ---------- */
 const NOVELS = [
   // Romance
   {
@@ -315,6 +430,7 @@ function initNovelsPage() {
   let query = "";
 
   grid.innerHTML = NOVELS.map(bookCardHTML).join("");
+  decorateBookCards();
 
   function applyFilters() {
     const cards = grid.querySelectorAll(".book-card");
@@ -429,9 +545,74 @@ function initBookDetailPage() {
         <p>${book.desc}</p>
       </div>
 
+      <button class="btn btn--primary reading-list-detail-button" type="button" data-reading-list-button="${book.id}" aria-pressed="${isInReadingList(book.id)}">
+        <span class="reading-list-icon" aria-hidden="true">${isInReadingList(book.id) ? "♥" : "♡"}</span>
+        ${isInReadingList(book.id) ? "Saved to My List" : "Add to My List"}
+      </button>
       <a class="btn btn--ghost" href="novels.html">Back to Novels</a>
     </div>
   `;
+
+  const saveButton = container.querySelector("[data-reading-list-button]");
+  if (saveButton) {
+    saveButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      const added = toggleReadingList(book.id);
+      saveButton.classList.toggle("is-saved", added);
+      saveButton.querySelector(".reading-list-icon").textContent = added ? "♥" : "♡";
+      saveButton.childNodes[2].textContent = added ? " Saved to My List" : " Add to My List";
+    });
+  }
+}
+
+/* ---------- My Reading List page ---------- */
+function initReadingListPage() {
+  const grid = document.querySelector("[data-reading-list-grid]");
+  if (!grid) return;
+
+  const emptyState = document.querySelector("[data-reading-list-empty]");
+  const countLabel = document.querySelector("[data-reading-list-page-count]");
+  const liveNote = document.querySelector("[data-reading-list-live]");
+
+  function render() {
+    const ids = getReadingList();
+    const savedBooks = ids.map((id) => NOVELS.find((book) => book.id === id)).filter(Boolean);
+
+    grid.innerHTML = savedBooks.length ? savedBooks.map(bookCardHTML).join("") : "";
+    if (emptyState) emptyState.hidden = savedBooks.length > 0;
+    if (countLabel) countLabel.textContent = `${savedBooks.length} saved novel${savedBooks.length === 1 ? "" : "s"}`;
+
+    decorateBookCards();
+
+    grid.querySelectorAll(".book-card").forEach((card) => {
+      const id = getBookIdFromHref(card.getAttribute("href") || "");
+      if (!id) return;
+      const button = card.querySelector("[data-reading-list-button]");
+      if (!button) return;
+      button.title = "Remove from My Reading List";
+      button.setAttribute("aria-label", "Remove from My Reading List");
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-reading-list-button]");
+    if (!button || !grid.contains(button)) return;
+    setTimeout(render, 0);
+  });
+
+  window.addEventListener("storage", render);
+  render();
+
+  if (liveNote) liveNote.setAttribute("aria-live", "polite");
+}
+
+/* ---------- add a footer shortcut without editing every HTML page ---------- */
+function initFooterReadingListLink() {
+  const footerLinks = document.querySelector(".footer-links");
+  if (!footerLinks || footerLinks.querySelector('a[href="my-list.html"]')) return;
+  const item = document.createElement("li");
+  item.innerHTML = '<a href="my-list.html">My Reading List</a>';
+  footerLinks.appendChild(item);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -439,4 +620,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initNewsletter();
   initNovelsPage();
   initBookDetailPage();
+  initReadingListPage();
+  initFooterReadingListLink();
+  decorateBookCards();
+  updateReadingListUI();
 });
